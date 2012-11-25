@@ -143,8 +143,6 @@ d_login() {
   fi
   local user="$(d_get_user)"
   local pass="$(d_get_pass)"
-  echo $user $pass $host
-  exit 1
   /usr/bin/expect -f $_current_dir/utility/expect.exp $user $pass $host
 }
 d_connect() {
