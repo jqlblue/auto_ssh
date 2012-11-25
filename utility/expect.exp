@@ -1,0 +1,31 @@
+#! /usr/bin/expect -f
+
+set USER [lindex $argv 0]
+set PASSWORD [lindex $argv 1]
+set IP [lindex $argv 2]
+
+spawn ssh -l $USER $IP
+
+expect {
+  timeout {
+    send_user "timeout\n"
+    exit 
+  }
+  eof {
+    send_user "eof\n"
+    exit
+  }
+  "Connection refused" {
+    send_user "connection refused\n"
+    exit
+  }
+  "(yes/no)?" {
+    send "yes\r"; exp_continue
+  }
+  "password:" {
+    send "$PASSWORD\r"; exp_continue
+  }
+  "Last login:" {
+    send_user "connected\n"; interact
+  }
+}
