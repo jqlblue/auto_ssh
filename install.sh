@@ -14,7 +14,8 @@ fi
 _user=$default_user
 _pass=$($_current_dir/utility/crypt.py -s $default_pass)
 echo -e "_user=$_user\n_pass=$_pass" > $_current_dir/data/.property
-# chmod 
+# chmod
+chmod +x $_current_dir/auto_ssh.sh
 chmod +x $_current_dir/utility/config.py
 chmod +x $_current_dir/utility/crypt.py
 chmod +x $_current_dir/utility/expect.exp
