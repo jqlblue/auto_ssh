@@ -4,6 +4,7 @@ import os, json, sys, getopt
 class Config:
     def __init__(self, config):
         self._config = config
+        self._items  = {}
         
     def getCategorys(self):
         categorys = self._config.keys()
@@ -13,11 +14,21 @@ class Config:
         items_dict = self._config.get(category)
         items = []
         for k, v in items_dict.items():
-            if v == '':
-                items.append(k)
-            else:
-                items.append(k + '[' + v + ']')
+            self._appendItem(v, k)
+        for alias, hosts in self._items.items():
+            hosts.sort()
+            for host in hosts:
+                items.append('[' + alias + ']' + host)
         print(" ".join(items))
+        
+    def _appendItem(self, alias, item):
+        if self._items.has_key(alias):
+            items = self._items.get(alias)
+            items.append(item)
+        else:
+            items = []
+            items.append(item)
+        self._items[alias] = items
 
     def getHostByAlias(self, alias):
         categorys = self._config.keys()

@@ -131,7 +131,7 @@ d_get_user() {
   fi
 }
 d_get_host() {
-  echo $_host | awk -F '[' '{print $1}'
+  echo $_host | awk -F ']' '{print $2}'
 }
 
 d_login() {
