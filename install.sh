@@ -19,5 +19,5 @@ chmod +x $_current_dir/auto_ssh.sh
 chmod +x $_current_dir/utility/config.py
 chmod +x $_current_dir/utility/crypt.py
 chmod +x $_current_dir/utility/expect.exp
-# add alias
-alias auto-ssh="$_current_dir/auto_ssh.sh"
+# add alias [later]
+#alias auto-ssh="$_current_dir/auto_ssh.sh"
