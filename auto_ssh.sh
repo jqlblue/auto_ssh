@@ -131,7 +131,12 @@ d_get_user() {
   fi
 }
 d_get_host() {
-  echo $_host | awk -F ']' '{print $2}'
+  if [[ $(echo $_host | grep ']') ]]
+  then
+    echo $_host | awk -F ']' '{print $2}'
+  else
+    echo $_host
+  fi
 }
 
 d_login() {
