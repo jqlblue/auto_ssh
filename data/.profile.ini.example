@@ -1,8 +1,0 @@
-[default]
-user = xxx
-pass = xxx
-port = 22
-[dev]
-user = xxx
-pass = xxx
-port = 22

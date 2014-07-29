@@ -7,13 +7,16 @@ echo -e "\tenter default user name:"
 read default_user
 echo -e "\tenter default user password:"
 read -s default_pass
-if [[ $default_user == '' || $default_pass == '' ]];then
-  echo 'please setting default user and pass first'
+echo -e "\tenter default ssh port:"
+read -s default_port
+if [[ $default_user == '' || $default_pass == '' || $default_port == '' ]];then
+  echo 'please setting default user, pass, port first'
   exit 1
 fi
 _user=$default_user
 _pass=$($_current_dir/utility/crypt.py -s $default_pass)
-echo -e "_user=$_user\n_pass=$_pass" > $_current_dir/data/.property
+_port=$default_port
+echo -e "[default]\nuser = $_user\npass = $_pass\nport = $_port" > $_current_dir/data/.profile.ini
 # chmod
 chmod +x $_current_dir/auto_ssh.sh
 chmod +x $_current_dir/utility/config.py
