@@ -3,8 +3,9 @@
 set USER [lindex $argv 0]
 set PASSWORD [lindex $argv 1]
 set IP [lindex $argv 2]
+set PORT [lindex $argv 3]
 
-spawn ssh -l $USER $IP
+spawn ssh -l $USER -p $PORT $IP
 
 expect {
   timeout {
