@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 from ConfigParser import SafeConfigParser
-import os, sys, getopt
+#import os, sys, getopt
+import os
+
 class Profile:
     def __init__(self, config):
         self._config = config
@@ -22,13 +24,13 @@ if __name__ == '__main__':
     
     config.read(config_path + '/../data/.profile.ini')
     #-c [category]
-    opts, args = getopt.getopt(sys.argv[1:], "hc:")
+    #opts, args = getopt.getopt(sys.argv[1:], "hc:")
     o = Profile(config)
 
     category = 'default'
 
-    for op, value in opts:
-        if op == '-c':
-            category = value
+    #for op, value in opts:
+        #if op == '-c':
+         #   category = value
 
     o.getProfile(category)

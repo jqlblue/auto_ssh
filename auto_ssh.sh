@@ -168,9 +168,11 @@ d_login() {
         exit 1
     fi
     local user="$(d_get_user)"
+
     local pass="$(d_get_pass)"
     local port="$(d_get_port)"
-    /usr/bin/expect -f $_current_dir/utility/expect.exp $user $pass $host $port
+    #/usr/bin/expect -f $_current_dir/utility/expect.exp $user $pass $host $port
+    $_current_dir/utility/p-ssh.py --host=$host --user=$user --port=$port --pass=$pass
 }
 
 d_connect() {
@@ -183,9 +185,9 @@ d_connect() {
     d_get_host_by_alias $__alias
   else
     d_get_category
-    d_get_item $_category
+    d_get_item $__category
   fi
-  d_set_profile $_category
+  d_set_profile $__category
   d_login
 }
 
